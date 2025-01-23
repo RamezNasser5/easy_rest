@@ -1,8 +1,20 @@
+import 'package:easy_rest/core/utils/helper.dart';
 import 'package:easy_rest/features/splach_feature/views/widgets/svg_assets.dart';
 import 'package:flutter/material.dart';
 
-class SplachScreenBody extends StatelessWidget {
+class SplachScreenBody extends StatefulWidget {
   const SplachScreenBody({super.key});
+
+  @override
+  State<SplachScreenBody> createState() => _SplachScreenBodyState();
+}
+
+class _SplachScreenBodyState extends State<SplachScreenBody> {
+  @override
+  void initState() {
+    Helper.navigationToOverView(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
