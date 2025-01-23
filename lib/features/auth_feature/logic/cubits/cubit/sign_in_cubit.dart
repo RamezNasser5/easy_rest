@@ -1,3 +1,4 @@
+import 'package:easy_rest/features/auth_feature/data/models/sign_in_model/sign_in_model.dart';
 import 'package:easy_rest/features/auth_feature/data/repo/sign_in_repo/sign_in_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,12 +10,11 @@ class SignInCubit extends Cubit<SignInState> {
 
   SignInRepoImpl signInRepoImpl = SignInRepoImpl();
 
-  signIn({required String email, required String password}) async {
+  signIn({required SignInModel signInModel}) async {
     emit(SignInLoading());
     try {
       final response = await signInRepoImpl.signIn(
-        email: email,
-        password: password,
+        signInModel: signInModel,
       );
       emit(SignInSuccess(token: response));
     } catch (e) {
