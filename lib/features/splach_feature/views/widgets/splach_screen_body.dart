@@ -1,4 +1,5 @@
 import 'package:easy_rest/core/utils/helper.dart';
+import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:easy_rest/features/splach_feature/views/widgets/svg_assets.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +19,15 @@ class _SplachScreenBodyState extends State<SplachScreenBody> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: EdgeInsets.only(
-              right: MediaQuery.of(context).size.width * 0.4,
+              right: SizeConfig.defaultSize! * 10,
             ),
             child: SVGAssets(
               svgPath: 'assets/images/Ellipse 1005.svg',
@@ -40,7 +44,7 @@ class _SplachScreenBodyState extends State<SplachScreenBody> {
           Spacer(),
           Padding(
             padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
+              left: SizeConfig.defaultSize! * 18,
             ),
             child: SVGAssets(
               svgPath: 'assets/images/Ellipse 1006.svg',

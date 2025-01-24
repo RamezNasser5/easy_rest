@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 abstract class Helper {
   static void navigationToOverView(context) {
-    Future.delayed(const Duration(seconds: 3),
+    Future.delayed(const Duration(seconds: 5),
         () => GoRouter.of(context).go(AppRouting.kOverViewRout));
   }
 }
