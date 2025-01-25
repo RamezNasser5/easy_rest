@@ -6,6 +6,9 @@ class SigninScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: const SigninScreenBody());
+    return Scaffold(
+      backgroundColor: Color(0xff121223),
+      body: const SigninScreenBody(),
+    );
   }
 }

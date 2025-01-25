@@ -1,4 +1,6 @@
+import 'package:easy_rest/features/auth_feature/logic/cubits/cubit/sign_in_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -27,7 +29,18 @@ class CustomButton extends StatelessWidget {
         ),
         width: width,
         height: height,
-        child: Center(child: Text('next')),
+        child: Center(child: BlocBuilder<SignInCubit, SignInState>(
+          builder: (context, state) {
+            if (state is SignInLoading) {
+              return const CircularProgressIndicator();
+            } else if (state is SignInSuccess) {
+              return Text(state.token);
+            } else if (state is SignInFailure) {
+              return Text(state.errorMessage);
+            }
+            return Text(text);
+          },
+        )),
       ),
     );
   }
