@@ -8,16 +8,20 @@ class DioServices {
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
-    final response = await dio.post(
-      baseUrl + endPoint,
-      data: data,
-      options: Options(
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      ),
-    );
+    try {
+      final response = await dio.post(
+        baseUrl + endPoint,
+        data: data,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
 
-    return response.data;
+      return response.data;
+    } on Exception catch (e) {
+      return e.toString();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:easy_rest/features/auth_feature/logic/cubits/cubit/sign_in_cubit.dart';
+import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
