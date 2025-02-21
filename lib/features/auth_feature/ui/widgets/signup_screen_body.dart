@@ -1,41 +1,44 @@
-import "package:easy_rest/features/auth_feature/data/models/signup_models/signup_model.dart";
-import "package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart";
-import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
+import 'package:easy_rest/core/utils/size_config.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_fields.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/custom_text_auth.dart';
+import 'package:easy_rest/features/splach_feature/views/widgets/svg_assets.dart';
+import 'package:flutter/material.dart';
 
 class SignupScreenBody extends StatelessWidget {
   const SignupScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: TextButton(
-        onPressed: () {
-          BlocProvider.of<SignupCubit>(context).signup(
-            signupModel: SignupModel.fromJson(
-              {
-                "username": "rameznasser",
-                "email": "rameznasser@gmail.com",
-                "password": "password",
-                "password-confirmation": "password"
-              },
-            ),
-          );
-        },
-        child: BlocBuilder<SignupCubit, SignupState>(
-          builder: (context, state) {
-            if (state is SignupLoading) {
-              return const CircularProgressIndicator();
-            } else if (state is SignupSuccess) {
-              return Text("Success ${state.message}");
-            } else if (state is SignupFailure) {
-              print(state.errormessage);
-              return Text("Error ${state.errormessage}");
-            }
-            return Text("Sign Up");
-          },
+    return Stack(
+      children: [
+        Positioned(
+          top: 0,
+          right: 0,
+          left: 0,
+          child: SVGAssets(
+            svgPath: 'assets/images/BG Asset.svg',
+            width: SizeConfig.defaultSize! * 0.04,
+            height: SizeConfig.defaultSize! * 0.05,
+          ),
         ),
-      ),
+        CustomTextAuth(
+          text: 'Sign Up',
+          fontWeight: FontWeight.w700,
+          fontSize: 30,
+          top: SizeConfig.defaultSize! * 16,
+          left: SizeConfig.width! * 0.38,
+          color: Colors.white,
+        ),
+        CustomTextAuth(
+          text: 'Please sign up to get started',
+          fontWeight: FontWeight.w400,
+          fontSize: 16,
+          top: SizeConfig.defaultSize! * 22,
+          left: SizeConfig.width! * 0.25,
+          color: Colors.white,
+        ),
+        CustomSignupFields(),
+      ],
     );
   }
 }

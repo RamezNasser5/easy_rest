@@ -1,20 +1,18 @@
 import 'package:easy_rest/core/utils/consts.dart';
 import 'package:easy_rest/core/utils/size_config.dart';
-import 'package:easy_rest/core/widgets/custom_button.dart';
 import 'package:easy_rest/core/widgets/custom_text_field.dart';
-import 'package:easy_rest/features/auth_feature/data/models/signin_model/sign_in_model.dart';
-import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_remeber_row.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_row.dart';
+import 'package:easy_rest/features/auth_feature/data/models/signup_models/signup_model.dart';
+import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomLoginFields extends StatelessWidget {
-  const CustomLoginFields({super.key});
+class CustomSignupFields extends StatelessWidget {
+  const CustomSignupFields({super.key});
 
   @override
   Widget build(BuildContext context) {
-    SignInModel signInModel = SignInModel();
+    SignupModel signupModel = SignupModel();
     return Positioned(
       top: SizeConfig.height! * 0.34,
       child: Container(
@@ -31,7 +29,28 @@ class CustomLoginFields extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                top: SizeConfig.height! * 0.03,
+                top: SizeConfig.height! * 0.01,
+                right: SizeConfig.width! * 0.8,
+              ),
+              child: Text(
+                'Name',
+                style: TextStyle(
+                  fontFamily: 'assets/fonts/Sen-VariableFont_wght.ttf',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            CustomTextField(
+              hintText: 'User Name',
+              icon: Icons.person,
+              onChanged: (value) {
+                signupModel.username = value;
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: SizeConfig.height! * 0.005,
                 right: SizeConfig.width! * 0.8,
               ),
               child: Text(
@@ -47,12 +66,11 @@ class CustomLoginFields extends StatelessWidget {
               hintText: 'Email',
               icon: Icons.email,
               onChanged: (value) {
-                signInModel.email = value;
+                signupModel.email = value;
               },
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: SizeConfig.height! * 0.01,
                 right: SizeConfig.width! * 0.7,
               ),
               child: Text(
@@ -68,34 +86,39 @@ class CustomLoginFields extends StatelessWidget {
               hintText: 'Password',
               icon: Icons.password,
               onChanged: (value) {
-                signInModel.password = value;
+                signupModel.password = value;
               },
             ),
-            CustomRemeberRow(),
-            CustomButton(
+            Padding(
+              padding: EdgeInsets.only(
+                top: SizeConfig.height! * 0.01,
+                right: SizeConfig.width! * 0.5,
+              ),
+              child: Text(
+                'Re-Enter Password',
+                style: TextStyle(
+                  fontFamily: 'assets/fonts/Sen-VariableFont_wght.ttf',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            CustomTextField(
+              hintText: 'Re-Enter Password',
+              icon: Icons.password,
+              onChanged: (value) {
+                signupModel.passwordConfirmation = value;
+              },
+            ),
+            CustomSignupButton(
               width: SizeConfig.width! * 0.8,
               height: SizeConfig.height! * 0.07,
               color: Consts.kPrimaryColor,
               onTap: () {
-                BlocProvider.of<SignInCubit>(context)
-                    .signIn(signInModel: signInModel);
+                BlocProvider.of<SignupCubit>(context)
+                    .signup(signupModel: signupModel);
               },
-              text: 'Log In',
-            ),
-            CustomSignupRow(),
-            Padding(
-              padding: EdgeInsets.only(
-                top: SizeConfig.height! * 0.01,
-                right: SizeConfig.width! * 0.05,
-              ),
-              child: Text(
-                'OR',
-                style: TextStyle(
-                  fontFamily: 'assets/fonts/Sen-VariableFont_wght.ttf',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                ),
-              ),
+              text: 'Sign Up',
             ),
           ],
         ),
