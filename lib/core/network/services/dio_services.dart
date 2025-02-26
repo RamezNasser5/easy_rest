@@ -1,7 +1,13 @@
 import 'package:dio/dio.dart';
 
 class DioServices {
-  Dio dio = Dio();
+  Dio dio = Dio(
+    BaseOptions(
+      validateStatus: (status) {
+        return status! < 500;
+      },
+    ),
+  );
   static String baseUrl = 'https://egroccery.onrender.com/api/v1/';
 
   Future post({

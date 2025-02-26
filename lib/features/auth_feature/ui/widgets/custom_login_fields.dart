@@ -6,6 +6,7 @@ import 'package:easy_rest/features/auth_feature/data/models/signin_model/sign_in
 import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
 import 'package:easy_rest/features/auth_feature/ui/widgets/custom_remeber_row.dart';
 import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_row.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/social_login_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -72,26 +73,15 @@ class CustomLoginFields extends StatelessWidget {
               },
             ),
             CustomRemeberRow(),
-            BlocBuilder<SignInCubit, SignInState>(
-              builder: (context, state) {
-                if (state is SignInLoading) {
-                  return const CircularProgressIndicator();
-                } else if (state is SignInSuccess) {
-                  return Text(state.token);
-                } else if (state is SignInFailure) {
-                  return Text(state.errorMessage);
-                }
-                return CustomButton(
-                    text: 'Login',
-                    width: SizeConfig.defaultSize! * 30,
-                    height: SizeConfig.defaultSize! * 6,
-                    color: Consts.kPrimaryColor,
-                    onTap: () {
-                      BlocProvider.of<SignInCubit>(context)
-                          .signIn(signInModel: signInModel);
-                    });
-              },
-            ),
+            CustomButton(
+                text: 'Login',
+                width: SizeConfig.defaultSize! * 30,
+                height: SizeConfig.defaultSize! * 6,
+                color: Consts.kPrimaryColor,
+                onTap: () {
+                  BlocProvider.of<SignInCubit>(context)
+                      .signIn(signInModel: signInModel);
+                }),
             CustomSignupRow(),
             Padding(
               padding: EdgeInsets.only(
@@ -107,6 +97,7 @@ class CustomLoginFields extends StatelessWidget {
                 ),
               ),
             ),
+            SocialLoginRow(),
           ],
         ),
       ),

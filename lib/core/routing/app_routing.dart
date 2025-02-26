@@ -2,6 +2,7 @@ import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_i
 import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signin_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signup_screen.dart';
+import 'package:easy_rest/features/home_feature/views/screens/home_screen.dart';
 import 'package:easy_rest/features/splach_feature/views/screens/over_view_screen.dart';
 import 'package:easy_rest/features/splach_feature/views/screens/splach_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ abstract class AppRouting {
   static final String kSignInRout = '/signin';
   static final String kSignUpRout = '/signup';
   static final String kForgotPasswordRout = '/forgot-password';
+  static final String kHomeRout = '/home';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -43,6 +45,10 @@ abstract class AppRouting {
         path: kForgotPasswordRout,
         builder: (context, state) => const SigninScreen(),
       ),
+      GoRoute(
+        path: kHomeRout,
+        builder: (context, state) => const HomeScreen(),
+      )
     ],
   );
 }

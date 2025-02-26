@@ -1,7 +1,9 @@
+import 'package:easy_rest/core/routing/app_routing.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_alert/flutter_platform_alert.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -36,7 +38,11 @@ class CustomButton extends StatelessWidget {
               if (state is SignInLoading) {
                 return const CircularProgressIndicator();
               } else if (state is SignInSuccess) {
-                return Text(state.token);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  GoRouter.of(context).go(AppRouting.kHomeRout);
+                });
+
+                return Text('Login Success');
               } else if (state is SignInFailure) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   FlutterPlatformAlert.showAlert(

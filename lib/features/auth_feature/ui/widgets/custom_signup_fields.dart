@@ -116,7 +116,7 @@ class CustomSignupFields extends StatelessWidget {
               color: Consts.kPrimaryColor,
               onTap: () {
                 BlocProvider.of<SignupCubit>(context)
-                    .signup(signupModel: signupModel);
+                    .signUp(signupModel: signupModel);
               },
               text: 'Sign Up',
             ),

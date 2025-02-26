@@ -10,13 +10,18 @@ class SignupCubit extends Cubit<SignupState> {
 
   SignupRepoImpl signupRepoImpl = SignupRepoImpl();
 
-  void signup({required SignupModel signupModel}) async {
+  Future<void> signUp({required SignupModel signupModel}) async {
     emit(SignupLoading());
-    try {
-      final message = await signupRepoImpl.signUp(signupModel: signupModel);
-      emit(SignupSuccess(message: message));
-    } catch (e) {
-      emit(SignupFailure(errormessage: e.toString()));
+
+    final response = await signupRepoImpl.signUp(
+      signupModel: signupModel,
+    );
+    if (response is Map<String, dynamic>) {
+      if (response.containsKey('user')) {
+        emit(SignupSuccess(message: response['message']));
+      } else {
+        emit(SignupFailure(errormessage: response['message']));
+      }
     }
   }
 }

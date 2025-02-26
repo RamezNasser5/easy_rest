@@ -11,9 +11,17 @@ class SignInRepoImpl implements SignInRepo {
       endPoint: 'auth/signin',
       data: signInModel.toJson(),
     );
+
+    print('Response: $response'); // Debugging
+
     if (response is Map<String, dynamic>) {
-      return response['token'];
+      if (response.containsKey('token')) {
+        return response['token'];
+      } else {
+        throw Exception('Token not found in response');
+      }
+    } else {
+      throw Exception('Unexpected response type');
     }
-    return response;
   }
 }

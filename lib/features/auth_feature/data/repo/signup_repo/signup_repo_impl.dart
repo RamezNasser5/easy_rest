@@ -12,10 +12,6 @@ class SignupRepoImpl implements SignupRepo {
       data: signupModel.toJson(),
     );
 
-    if (response is Map<String, dynamic>) {
-      return response['message'];
-    }
-
     return response;
   }
 }
