@@ -45,7 +45,10 @@ class _OverViewScreenBodyState extends State<OverViewScreenBody> {
               top: SizeConfig.defaultSize! * 4,
             ),
             child: CustomButton(
-              text: 'next',
+              text: pageController!.hasClients &&
+                      pageController!.page!.toInt() == 3
+                  ? 'Get Started'
+                  : 'Next',
               width: SizeConfig.defaultSize! * 30,
               height: SizeConfig.defaultSize! * 6,
               color: Consts.kPrimaryColor,

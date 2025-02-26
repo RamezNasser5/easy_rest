@@ -13,6 +13,7 @@ abstract class AppRouting {
   static final String kOverViewRout = '/overview';
   static final String kSignInRout = '/signin';
   static final String kSignUpRout = '/signup';
+  static final String kForgotPasswordRout = '/forgot-password';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -37,7 +38,11 @@ abstract class AppRouting {
           create: (context) => SignupCubit(),
           child: const SignupScreen(),
         ),
-      )
+      ),
+      GoRoute(
+        path: kForgotPasswordRout,
+        builder: (context, state) => const SigninScreen(),
+      ),
     ],
   );
 }

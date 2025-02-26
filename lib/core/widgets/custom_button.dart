@@ -1,6 +1,7 @@
 import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_platform_alert/flutter_platform_alert.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -37,11 +38,21 @@ class CustomButton extends StatelessWidget {
               } else if (state is SignInSuccess) {
                 return Text(state.token);
               } else if (state is SignInFailure) {
-                return Text(state.errorMessage);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  FlutterPlatformAlert.showAlert(
+                    windowTitle: 'Error',
+                    text: state.errorMessage,
+                  );
+                });
+
+                return const Text('Error Occurred',
+                    style: TextStyle(color: Colors.red));
               }
               return Text(text);
             },
           ),
+
+          // child: Text(text),
         ),
       ),
     );

@@ -16,9 +16,9 @@ class SignInCubit extends Cubit<SignInState> {
       final response = await signInRepoImpl.signIn(
         signInModel: signInModel,
       );
-      emit(SignInSuccess(token: response));
+      emit(SignInSuccess(token: response['token']));
     } catch (e) {
-      emit(SignInFailure(errorMessage: e.toString()));
+      emit(SignInFailure(errorMessage: 'this email is not registered'));
     }
   }
 }

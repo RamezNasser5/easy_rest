@@ -3,7 +3,8 @@ import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_i
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(BlocProvider(
     create: (context) => SignInCubit(),
     child: const EasyRest(),

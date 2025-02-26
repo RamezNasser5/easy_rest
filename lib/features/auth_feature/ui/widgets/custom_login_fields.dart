@@ -72,15 +72,25 @@ class CustomLoginFields extends StatelessWidget {
               },
             ),
             CustomRemeberRow(),
-            CustomButton(
-              width: SizeConfig.width! * 0.8,
-              height: SizeConfig.height! * 0.07,
-              color: Consts.kPrimaryColor,
-              onTap: () {
-                BlocProvider.of<SignInCubit>(context)
-                    .signIn(signInModel: signInModel);
+            BlocBuilder<SignInCubit, SignInState>(
+              builder: (context, state) {
+                if (state is SignInLoading) {
+                  return const CircularProgressIndicator();
+                } else if (state is SignInSuccess) {
+                  return Text(state.token);
+                } else if (state is SignInFailure) {
+                  return Text(state.errorMessage);
+                }
+                return CustomButton(
+                    text: 'Login',
+                    width: SizeConfig.defaultSize! * 30,
+                    height: SizeConfig.defaultSize! * 6,
+                    color: Consts.kPrimaryColor,
+                    onTap: () {
+                      BlocProvider.of<SignInCubit>(context)
+                          .signIn(signInModel: signInModel);
+                    });
               },
-              text: 'Log In',
             ),
             CustomSignupRow(),
             Padding(

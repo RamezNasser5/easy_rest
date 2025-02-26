@@ -1,6 +1,8 @@
+import 'package:easy_rest/core/routing/app_routing.dart';
 import 'package:easy_rest/core/utils/consts.dart';
 import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomRemeberRow extends StatefulWidget {
   const CustomRemeberRow({super.key});
@@ -32,7 +34,11 @@ class _CustomRemeberRowState extends State<CustomRemeberRow> {
           Text('Remember me'),
           Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).go(
+                AppRouting.kForgotPasswordRout,
+              );
+            },
             child: Text(
               'Forgot Password?',
               style: TextStyle(
