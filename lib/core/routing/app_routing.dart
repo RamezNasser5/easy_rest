@@ -1,5 +1,7 @@
+import 'package:easy_rest/features/auth_feature/logic/cubits/forget_password_ploc/forget_password_bloc.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart';
+import 'package:easy_rest/features/auth_feature/ui/screens/forgot_password_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signin_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signup_screen.dart';
 import 'package:easy_rest/features/home_feature/views/screens/home_screen.dart';
@@ -43,7 +45,10 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: kForgotPasswordRout,
-        builder: (context, state) => const SigninScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ForgetPasswordBloc(),
+          child: const ForgotPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: kHomeRout,
