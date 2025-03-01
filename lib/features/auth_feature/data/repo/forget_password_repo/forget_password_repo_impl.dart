@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:easy_rest/core/network/services/dio_services.dart';
 import 'package:easy_rest/features/auth_feature/data/repo/forget_password_repo/forget_password_repo.dart';
 
@@ -29,8 +31,30 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   }
 
   @override
-  Future verifyCode({required String code}) {
-    // TODO: implement verifyCode
-    throw UnimplementedError();
+  Future<dynamic> verifyCode({required String code}) async {
+    final response = await dioServices.patch(
+      endPoint: 'auth/verify-password-reset-code',
+      data: {'resetCode': code},
+    );
+
+    // Check if the response is a Map (JSON)
+    if (response is Map<String, dynamic>) {
+      print('Response Map: $response');
+      return response;
+    }
+    // Check if the response is a String (plain text)
+    else if (response is String) {
+      try {
+        print('Response json: $response');
+        return jsonDecode(response);
+      } catch (e) {
+        print('Response Message error: $response');
+        return {'message': response};
+      }
+    }
+    // Handle unexpected response types
+    else {
+      throw Exception('Unexpected response type: ${response.runtimeType}');
+    }
   }
 }

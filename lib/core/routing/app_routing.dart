@@ -4,6 +4,7 @@ import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup
 import 'package:easy_rest/features/auth_feature/ui/screens/forgot_password_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signin_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signup_screen.dart';
+import 'package:easy_rest/features/auth_feature/ui/screens/verify_code_screen.dart';
 import 'package:easy_rest/features/home_feature/views/screens/home_screen.dart';
 import 'package:easy_rest/features/splach_feature/views/screens/over_view_screen.dart';
 import 'package:easy_rest/features/splach_feature/views/screens/splach_screen.dart';
@@ -18,6 +19,7 @@ abstract class AppRouting {
   static final String kSignUpRout = '/signup';
   static final String kForgotPasswordRout = '/forgot-password';
   static final String kHomeRout = '/home';
+  static final String kVerifyCodeRout = '/verify-code';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -53,6 +55,13 @@ abstract class AppRouting {
       GoRoute(
         path: kHomeRout,
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: kVerifyCodeRout,
+        builder: (context, state) => BlocProvider(
+          create: (context) => ForgetPasswordBloc(),
+          child: const VerifyCodeScreen(),
+        ),
       )
     ],
   );

@@ -29,6 +29,41 @@ class ForgetPasswordBloc
             errormessage: response['message'],
           ));
         }
+      } else if (event is VerifyCodeEvent) {
+        emit(VerifyCodeLoading());
+
+        try {
+          final response = await forgetPasswordRepoImpl.verifyCode(
+            code: event.code,
+          );
+
+          // Check if the response is a Map and contains the 'status' key
+          if (response is Map<String, dynamic> &&
+              response['status'] == 'success') {
+            emit(VerifyCodeSuccess(
+              message: response['message'],
+            ));
+          }
+          // Handle failure cases
+          else if (response is Map<String, dynamic> &&
+              response['message'] != null) {
+            emit(VerifyCodeFailure(
+              errormessage: response['message'],
+            ));
+            print(response['message']);
+          }
+          // Handle unexpected response formats
+          else {
+            emit(VerifyCodeFailure(
+              errormessage: 'Unexpected response format',
+            ));
+          }
+        } catch (e) {
+          // Handle exceptions
+          emit(VerifyCodeFailure(
+            errormessage: e.toString(),
+          ));
+        }
       }
     });
   }

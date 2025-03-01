@@ -6,6 +6,9 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ForgotPasswordScreenBody();
+    return Scaffold(
+      backgroundColor: Color(0xff121223),
+      body: const ForgotPasswordScreenBody(),
+    );
   }
 }

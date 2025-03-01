@@ -1,11 +1,11 @@
 import 'package:easy_rest/core/utils/size_config.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_forgot_password_fields.dart';
 import 'package:easy_rest/features/auth_feature/ui/widgets/custom_text_auth.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/custom_verify_code_fields.dart';
 import 'package:easy_rest/features/splach_feature/views/widgets/svg_assets.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordScreenBody extends StatelessWidget {
-  const ForgotPasswordScreenBody({super.key});
+class VerifyCodeScreenBody extends StatelessWidget {
+  const VerifyCodeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +22,22 @@ class ForgotPasswordScreenBody extends StatelessWidget {
           ),
         ),
         CustomTextAuth(
-          text: 'Forgot Password',
+          text: 'Verification',
           fontWeight: FontWeight.w700,
           fontSize: 30,
           top: SizeConfig.defaultSize! * 16,
-          left: SizeConfig.width! * 0.2,
+          left: SizeConfig.width! * 0.3,
           color: Colors.white,
         ),
         CustomTextAuth(
-          text: 'Please sign in to your existing account',
+          text: 'We have sent a code to your email',
           fontWeight: FontWeight.w400,
           fontSize: 16,
           top: SizeConfig.defaultSize! * 22,
-          left: SizeConfig.width! * 0.16,
+          left: SizeConfig.width! * 0.2,
           color: Colors.white,
         ),
-        CustomForgotPasswordFields(),
+        CustomVerifyCodeFields(),
       ],
     );
   }

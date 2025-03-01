@@ -3,7 +3,7 @@ import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:easy_rest/core/widgets/custom_text_field.dart';
 import 'package:easy_rest/features/auth_feature/data/models/signup_models/signup_model.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_model.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
