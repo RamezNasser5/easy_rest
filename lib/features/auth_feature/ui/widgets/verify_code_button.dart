@@ -1,8 +1,10 @@
+import 'package:easy_rest/core/routing/app_routing.dart';
 import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/forget_password_ploc/forget_password_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_alert/flutter_platform_alert.dart';
+import 'package:go_router/go_router.dart';
 
 class VerifyCodeButton extends StatelessWidget {
   const VerifyCodeButton({
@@ -48,9 +50,9 @@ class VerifyCodeButton extends StatelessWidget {
                     );
                   });
 
-                  // WidgetsBinding.instance.addPostFrameCallback((_) {
-                  //   GoRouter.of(context).go(AppRouting.kSignInRout);
-                  // });
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    GoRouter.of(context).go(AppRouting.kResetPasswordRout);
+                  });
 
                   return Text(state.message);
                 } else if (state is VerifyCodeFailure) {

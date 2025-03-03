@@ -64,6 +64,43 @@ class ForgetPasswordBloc
             errormessage: e.toString(),
           ));
         }
+      } else if (event is ResetPasswordEvent) {
+        emit(ResetPasswordLoading());
+
+        try {
+          final response = await forgetPasswordRepoImpl.resetPassword(
+            email: event.email,
+            password: event.password,
+            confirmPassword: event.confirmPassword,
+          );
+
+          // Check if the response is a Map and contains the 'status' key
+          if (response is Map<String, dynamic> &&
+              response['status'] == 'success') {
+            emit(ResetPasswordSuccess(
+              message: response['message'],
+            ));
+          }
+          // Handle failure cases
+          else if (response is Map<String, dynamic> &&
+              response['message'] != null) {
+            emit(ResetPasswordFailure(
+              errormessage: response['message'],
+            ));
+            print(response['message']);
+          }
+          // Handle unexpected response formats
+          else {
+            emit(ResetPasswordFailure(
+              errormessage: 'Unexpected response format',
+            ));
+          }
+        } catch (e) {
+          // Handle exceptions
+          emit(ResetPasswordFailure(
+            errormessage: e.toString(),
+          ));
+        }
       }
     });
   }

@@ -22,12 +22,28 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   }
 
   @override
-  Future resetPassword(
-      {required String email,
-      required String password,
-      required String confirmPassword}) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
+  Future<dynamic> resetPassword({
+    required String email,
+    required String password,
+    required String confirmPassword,
+  }) async {
+    final response = await dioServices.patch(
+      endPoint: 'auth/reset-password',
+      data: {
+        'email': email,
+        'password': password,
+        'passwordConfirmation': confirmPassword,
+      },
+    );
+
+    if (response is Map<String, dynamic>) {
+      return response;
+    } else {
+      print('Response: $response');
+      throw Exception(
+        'Unexpected response type: ${response.runtimeType}',
+      );
+    }
   }
 
   @override

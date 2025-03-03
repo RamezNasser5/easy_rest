@@ -2,6 +2,7 @@ import 'package:easy_rest/features/auth_feature/logic/cubits/forget_password_plo
 import 'package:easy_rest/features/auth_feature/logic/cubits/signin_cubit/sign_in_cubit.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/forgot_password_screen.dart';
+import 'package:easy_rest/features/auth_feature/ui/screens/reset_password_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signin_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/signup_screen.dart';
 import 'package:easy_rest/features/auth_feature/ui/screens/verify_code_screen.dart';
@@ -20,6 +21,7 @@ abstract class AppRouting {
   static final String kForgotPasswordRout = '/forgot-password';
   static final String kHomeRout = '/home';
   static final String kVerifyCodeRout = '/verify-code';
+  static final String kResetPasswordRout = '/reset-password';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -61,6 +63,13 @@ abstract class AppRouting {
         builder: (context, state) => BlocProvider(
           create: (context) => ForgetPasswordBloc(),
           child: const VerifyCodeScreen(),
+        ),
+      ),
+      GoRoute(
+        path: kResetPasswordRout,
+        builder: (context, state) => BlocProvider(
+          create: (context) => ForgetPasswordBloc(),
+          child: const ResetPasswordScreen(),
         ),
       )
     ],
