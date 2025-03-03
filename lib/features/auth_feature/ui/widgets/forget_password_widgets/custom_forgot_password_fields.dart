@@ -2,7 +2,7 @@ import 'package:easy_rest/core/utils/consts.dart';
 import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:easy_rest/core/widgets/custom_text_field.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/forget_password_ploc/forget_password_bloc.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_forgot_password.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/custom_forgot_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

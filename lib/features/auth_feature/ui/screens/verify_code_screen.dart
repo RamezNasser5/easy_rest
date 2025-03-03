@@ -1,4 +1,4 @@
-import 'package:easy_rest/features/auth_feature/ui/widgets/verify_code_screen_body.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/verify_code_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class VerifyCodeScreen extends StatelessWidget {

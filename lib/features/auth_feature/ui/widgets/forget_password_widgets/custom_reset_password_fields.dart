@@ -2,13 +2,13 @@ import 'package:easy_rest/core/utils/consts.dart';
 import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:easy_rest/core/widgets/custom_text_field.dart';
 import 'package:easy_rest/features/auth_feature/data/models/signup_models/signup_model.dart';
-import 'package:easy_rest/features/auth_feature/logic/cubits/signup_cubit/signup_cubit.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_signup_button.dart';
+import 'package:easy_rest/features/auth_feature/logic/cubits/forget_password_ploc/forget_password_bloc.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/custom_reset_password_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomSignupFields extends StatelessWidget {
-  const CustomSignupFields({super.key});
+class CustomResetPasswordFields extends StatelessWidget {
+  const CustomResetPasswordFields({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,27 +27,6 @@ class CustomSignupFields extends StatelessWidget {
         height: SizeConfig.height,
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                top: SizeConfig.height! * 0.01,
-                right: SizeConfig.width! * 0.8,
-              ),
-              child: Text(
-                'Name',
-                style: TextStyle(
-                  fontFamily: 'assets/fonts/Sen-VariableFont_wght.ttf',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            CustomTextField(
-              hintText: 'User Name',
-              icon: Icons.person,
-              onChanged: (value) {
-                signupModel.username = value;
-              },
-            ),
             Padding(
               padding: EdgeInsets.only(
                 top: SizeConfig.height! * 0.005,
@@ -110,16 +89,22 @@ class CustomSignupFields extends StatelessWidget {
                 signupModel.passwordConfirmation = value;
               },
             ),
-            CustomSignupButton(
-              width: SizeConfig.width! * 0.8,
-              height: SizeConfig.height! * 0.07,
-              color: Consts.kPrimaryColor,
-              onTap: () {
-                BlocProvider.of<SignupCubit>(context)
-                    .signUp(signupModel: signupModel);
-              },
-              text: 'Sign Up',
-            ),
+            CustomResetPasswordButton(
+                text: 'Reset Password',
+                width: SizeConfig.width! * 0.8,
+                height: SizeConfig.height! * 0.06,
+                color: Consts.kPrimaryColor,
+                onTap: () {
+                  print(
+                      '${signupModel.email} ${signupModel.password} ${signupModel.passwordConfirmation}');
+                  BlocProvider.of<ForgetPasswordBloc>(context).add(
+                    ResetPasswordEvent(
+                      email: signupModel.email!,
+                      password: signupModel.password!,
+                      confirmPassword: signupModel.passwordConfirmation!,
+                    ),
+                  );
+                }),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:easy_rest/core/utils/size_config.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_code_fields.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/custom_code_fields.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordCodeRow extends StatelessWidget {

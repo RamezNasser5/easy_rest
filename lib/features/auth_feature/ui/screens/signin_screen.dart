@@ -1,4 +1,4 @@
-import 'package:easy_rest/features/auth_feature/ui/widgets/signin_screen_body.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/auth_widgets/signin_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class SigninScreen extends StatelessWidget {

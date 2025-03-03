@@ -1,4 +1,4 @@
-import 'package:easy_rest/features/auth_feature/ui/widgets/forgot_password_screen_body.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/forgot_password_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {

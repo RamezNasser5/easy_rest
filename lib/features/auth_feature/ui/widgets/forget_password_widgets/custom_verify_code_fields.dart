@@ -1,8 +1,8 @@
 import 'package:easy_rest/core/utils/consts.dart';
 import 'package:easy_rest/core/utils/size_config.dart';
 import 'package:easy_rest/features/auth_feature/logic/cubits/forget_password_ploc/forget_password_bloc.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/forgot_password_code_row.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/verify_code_button.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/forgot_password_code_row.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/verify_code_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

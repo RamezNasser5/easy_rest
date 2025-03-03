@@ -1,6 +1,6 @@
 import 'package:easy_rest/core/utils/size_config.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_text_auth.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_verify_code_fields.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/auth_widgets/custom_text_auth.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/custom_verify_code_fields.dart';
 import 'package:easy_rest/features/splach_feature/views/widgets/svg_assets.dart';
 import 'package:flutter/material.dart';
 

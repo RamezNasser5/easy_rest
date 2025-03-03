@@ -1,11 +1,11 @@
 import 'package:easy_rest/core/utils/size_config.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_forgot_password_fields.dart';
-import 'package:easy_rest/features/auth_feature/ui/widgets/custom_text_auth.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/auth_widgets/custom_text_auth.dart';
+import 'package:easy_rest/features/auth_feature/ui/widgets/forget_password_widgets/custom_reset_password_fields.dart';
 import 'package:easy_rest/features/splach_feature/views/widgets/svg_assets.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordScreenBody extends StatelessWidget {
-  const ForgotPasswordScreenBody({super.key});
+class ResetPasswordScreenBody extends StatelessWidget {
+  const ResetPasswordScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +22,22 @@ class ForgotPasswordScreenBody extends StatelessWidget {
           ),
         ),
         CustomTextAuth(
-          text: 'Forgot Password',
+          text: 'Reset Password',
           fontWeight: FontWeight.w700,
           fontSize: 30,
           top: SizeConfig.defaultSize! * 16,
-          left: SizeConfig.width! * 0.2,
+          left: SizeConfig.width! * 0.26,
           color: Colors.white,
         ),
         CustomTextAuth(
-          text: 'Please sign in to your existing account',
+          text: 'Please sign up to Reset Password',
           fontWeight: FontWeight.w400,
           fontSize: 16,
           top: SizeConfig.defaultSize! * 22,
-          left: SizeConfig.width! * 0.16,
+          left: SizeConfig.width! * 0.23,
           color: Colors.white,
         ),
-        CustomForgotPasswordFields(),
+        CustomResetPasswordFields(),
       ],
     );
   }
